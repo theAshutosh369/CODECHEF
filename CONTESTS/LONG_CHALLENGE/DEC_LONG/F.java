@@ -72,8 +72,6 @@ public class F {
         {
             arr[i]= s.nextInt();
         }
-
-        Arrays.sort( arr );
         long sum = 0;
         for (int i = 0; i < n; i++)
         {
@@ -82,16 +80,14 @@ public class F {
                 long tp = 0 ;
                 for (int k = i; k <=j; k++)
                 {
-                    tp = tp + arr[k]  ;
+                    tp = ( tp + arr[k]%mod ) %mod  ;
                 }
-                System.out.print(tp + " ");
-                sum = ( sum + (long)Math.pow( tp,3 ) ) ;
+                sum = ( sum + (long)Math.pow(tp,3)%mod )%mod ;
             }
         }
-        System.out.println();
-
-//        System.out.println(sum );
+        System.out.println(  sum%mod  );
     }
+
 
     public static void main ( String[] args ) {
 
@@ -102,5 +98,7 @@ public class F {
         s.close();
         //-------------------------------------------
     }
+
+
 }
 
