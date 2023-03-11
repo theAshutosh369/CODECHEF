@@ -1,5 +1,5 @@
 package CODECHEF.PRACTICE;
-// Ashutosh lack_of_logicirajdar
+// Ashutosh black_n_white_cellsirajdar
 
 /*
                                    || कृष्ण सदा सहायते ||
@@ -60,42 +60,30 @@ package CODECHEF.PRACTICE;
 
 import java.util.*;
 
-public class lack_of_logic {
-
+public class black_n_white_cells {
     static Scanner s = new Scanner(System.in);
 
-    static void AshutoshKaUniqueAnswer ()
+    static void AshutoshKaUniqueAnswer()
     {
-        String str = s.nextLine();
-        int ch[] = new int[26];
-        int n = str.length();
-        for (int i = 0; i < n; i++)
-        {
-            char c = str.charAt(i);
-            if( (c>=65 && c<=90) || (c>=97 && c<=122) )
+        String str= s.next();
+        int f = 0 , s = 0 ;
+        boolean flag = true;
+        for (int i = 0; i < str.length(); i++) {
+            if( str.charAt(i)=='B' && flag )
             {
-                if (  c <= 90 ) {
-                    c = (char) (c + 32);
-                }
-                ch[c - 97] = 1;
+                f++;
             }
+            if( str.charAt(i)=='W') flag = false;
+            if( str.charAt(i)=='B' && !flag ) s++;
         }
 
-        String ans = "";
-        for (int i = 0; i < 26; i++) {
-            if( ch[i]==0 ) {
-                ans+= Character.toString( (char)(i+97));
-                break;
-            }
-        }
-        if( ans.equals("") ) System.out.println("~");
-        else System.out.println( ans );
+        if( f!=s ) System.out.println("Aleksa");
+        else System.out.println("Chef");
     }
 
     public static void main ( String[] args ) {
 
-
-        int t = Integer.parseInt( s.nextLine() );
+        int t = s.nextInt();
         for (int test = 0; test < t; test++)
         {
             AshutoshKaUniqueAnswer();
@@ -103,7 +91,9 @@ public class lack_of_logic {
         s.close();
         //-------------------------------------------
 
-
     }
 }
+
+
+
 

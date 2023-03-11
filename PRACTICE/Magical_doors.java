@@ -1,5 +1,5 @@
 package CODECHEF.PRACTICE;
-// Ashutosh lack_of_logicirajdar
+// Ashutosh Magical_doorsirajdar
 
 /*
                                    || कृष्ण सदा सहायते ||
@@ -60,50 +60,34 @@ package CODECHEF.PRACTICE;
 
 import java.util.*;
 
-public class lack_of_logic {
-
+public class Magical_doors {
     static Scanner s = new Scanner(System.in);
 
-    static void AshutoshKaUniqueAnswer ()
+    static void AshutoshKaUniqueAnswer()
     {
-        String str = s.nextLine();
-        int ch[] = new int[26];
+        String str = s.next();
         int n = str.length();
-        for (int i = 0; i < n; i++)
-        {
-            char c = str.charAt(i);
-            if( (c>=65 && c<=90) || (c>=97 && c<=122) )
-            {
-                if (  c <= 90 ) {
-                    c = (char) (c + 32);
-                }
-                ch[c - 97] = 1;
+        char ch = str.charAt(0);
+        int c = 0 ;
+        for (int i = 0; i < n; i++) {
+            char t = str.charAt(i);
+            if( ch!=t) {
+                c++;
+                ch = t;
             }
         }
-
-        String ans = "";
-        for (int i = 0; i < 26; i++) {
-            if( ch[i]==0 ) {
-                ans+= Character.toString( (char)(i+97));
-                break;
-            }
-        }
-        if( ans.equals("") ) System.out.println("~");
-        else System.out.println( ans );
+        if( str.charAt(0)=='1') System.out.println( c );
+        else System.out.println( c+1 );
     }
 
-    public static void main ( String[] args ) {
+    public static void main( String[] args ) {
 
-
-        int t = Integer.parseInt( s.nextLine() );
-        for (int test = 0; test < t; test++)
-        {
+        int t = s.nextInt();
+        for (int test = 0; test < t; test++) {
             AshutoshKaUniqueAnswer();
         }
         s.close();
         //-------------------------------------------
-
-
     }
 }
 

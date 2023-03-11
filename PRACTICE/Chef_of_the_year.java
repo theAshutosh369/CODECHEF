@@ -1,5 +1,5 @@
 package CODECHEF.PRACTICE;
-// Ashutosh lack_of_logicirajdar
+// Ashutosh Chef_of_the_yearirajdar
 
 /*
                                    || कृष्ण सदा सहायते ||
@@ -60,49 +60,73 @@ package CODECHEF.PRACTICE;
 
 import java.util.*;
 
-public class lack_of_logic {
-
+public class Chef_of_the_year {
     static Scanner s = new Scanner(System.in);
 
-    static void AshutoshKaUniqueAnswer ()
-    {
-        String str = s.nextLine();
-        int ch[] = new int[26];
-        int n = str.length();
-        for (int i = 0; i < n; i++)
-        {
-            char c = str.charAt(i);
-            if( (c>=65 && c<=90) || (c>=97 && c<=122) )
-            {
-                if (  c <= 90 ) {
-                    c = (char) (c + 32);
-                }
-                ch[c - 97] = 1;
-            }
-        }
 
-        String ans = "";
-        for (int i = 0; i < 26; i++) {
-            if( ch[i]==0 ) {
-                ans+= Character.toString( (char)(i+97));
-                break;
-            }
-        }
-        if( ans.equals("") ) System.out.println("~");
-        else System.out.println( ans );
-    }
 
     public static void main ( String[] args ) {
 
+        int n = s.nextInt();
+        int m = s.nextInt();
 
-        int t = Integer.parseInt( s.nextLine() );
-        for (int test = 0; test < t; test++)
-        {
-            AshutoshKaUniqueAnswer();
+        Map<String , String> ntoct = new HashMap<>();
+
+        for (int i = 0; i < n; i++) {
+            String name = s.next();
+            String ct = s.next();
+
+            ntoct.put( name , ct );
         }
-        s.close();
-        //-------------------------------------------
 
+        Map<String, Integer> ctcount = new HashMap<>();
+        Map<String, Integer> chefcount = new HashMap<>();
+        for (int i = 0; i < m; i++) {
+            String t = s.next();
+            String ct =  ntoct.get(t);
+            chefcount.put( t , chefcount.getOrDefault( t , 0 )+1 );
+            ctcount.put( ct , ctcount.getOrDefault( ct , 0 )+1 );
+        }
+
+        int chefmx = 0 ;
+        for ( Map.Entry<String  , Integer> e : chefcount.entrySet() )
+        {
+            if( e.getValue()>chefmx ) chefmx = e.getValue();
+        }
+
+        int ctmx = 0 ;
+        for ( Map.Entry<String  , Integer> e : ctcount.entrySet() )
+        {
+            if( e.getValue()>ctmx ) ctmx = e.getValue();
+        }
+
+
+        ArrayList<String> chefffff = new ArrayList<>();
+        for ( Map.Entry<String  , Integer> e : chefcount.entrySet() )
+        {
+            if( e.getValue()==chefmx ) chefffff.add( e.getKey());
+        }
+
+
+        ArrayList<String> cttttt = new ArrayList<>();
+        for ( Map.Entry<String  , Integer> e : ctcount.entrySet() )
+        {
+            if( e.getValue()==ctmx ) cttttt.add( e.getKey());
+        }
+
+
+
+        String ansct = "zzzzzzzzzzzzzzzzzzzzzz";
+        for (int i = 0; i < cttttt.size(); i++) {
+            if( cttttt.get(i).compareTo(ansct) <0  ) ansct = cttttt.get(i);
+        }
+        System.out.println( ansct);
+
+        String anschef = "zzzzzzzzzzzzzzzzzzzzzz";
+        for (int i = 0; i < cttttt.size(); i++) {
+            if( chefffff.get(i).compareTo(anschef) <0  ) anschef = chefffff.get(i);
+        }
+        System.out.println( anschef);
 
     }
 }
