@@ -37,7 +37,8 @@ public class chef_and_recipes {
 
     }
 
-    public static void main ( String[] args ) {
+    public static void main ( String[] args )
+    {
 
         int t = s.nextInt();
         for (int test = 0; test < t; test++) {
